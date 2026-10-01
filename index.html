@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>KogDesign — Web Design & Development</title>
+<style>
+:root{--bg:#000;--panel:#04130f;--line:#103c31;--muted:#9ab5ad;--text:#f3f7f5;--green:#00f0aa;--green2:#00b987}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px Arial,Helvetica,sans-serif}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.site{width:min(1600px,calc(100% - 40px));margin:0 auto;background:#010807;overflow:hidden}
+.hero{min-height:800px;padding:0 80px 80px;background:radial-gradient(circle at 76% 32%,#063d2b33,transparent 30%),linear-gradient(120deg,#000908,#020d0a)}
+header{height:100px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-size:24px;font-weight:800}.brand span{color:var(--green)}
+nav{display:flex;gap:50px;font-size:14px;color:#c4d2ce}
+nav a:first-child{color:var(--green);border-bottom:2px solid var(--green);padding-bottom:10px}
+.cta,.button{border:0;border-radius:30px;padding:15px 28px;font-weight:700;cursor:pointer}
+.cta,.primary{background:var(--green);color:#00251a}
+.outline{background:transparent;border:1px solid var(--green);color:var(--green)}
+.hero-grid{display:grid;grid-template-columns:1fr 1.2fr;align-items:center;min-height:650px}
+.eyebrow,.mini{font-size:12px;letter-spacing:1.5px;color:var(--green);font-weight:700}
+.hero h1{font-size:72px;line-height:.95;letter-spacing:-3px;margin:24px 0}
+.hero h1 span{color:var(--green)}
+.hero p{color:#b0c3bd;line-height:1.6;font-size:18px}
+.actions{display:flex;gap:32px;margin-top:36px}
+.hero-art{height:600px;position:relative}
+.scribble{position:absolute;right:80px;top:30px;color:var(--green);font-style:italic;transform:rotate(-6deg);font-size:18px}
+.laptop{position:absolute;left:50px;top:150px;width:600px;height:350px;transform:perspective(800px) rotateY(-7deg)}
+.screen{height:350px;border:8px solid #6e8981;border-radius:16px 16px 6px 6px;background:linear-gradient(135deg,#121b1a,#030807);padding:24px;color:#eef}
+.screen h3{font-size:42px;line-height:.88;margin:80px 0;letter-spacing:-1px}
+.screen b{color:var(--green)}
+.screen small{background:var(--green);color:#00251a;border-radius:14px;font-size:9px;font-weight:800;padding:6px 14px;margin-top:16px;display:inline-block}
+.base{height:22px;width:680px;margin-left:-40px;background:linear-gradient(#7c8c88,#2b3735 48%,#0a1010);border-radius:4px 4px 60% 60%}
+.phone{position:absolute;left:580px;top:260px;width:130px;height:250px;padding:10px;border:5px solid #354341;border-radius:20px;background:#111;transform:rotate(4deg);box-shadow:0 10px 30px #000}
+.phone-screen{height:100%;border-radius:12px;background:linear-gradient(150deg,#152624,#060d0d);padding:14px 10px}
+.phone h4{font-size:18px;line-height:.9;font-weight:800;margin:50px 0}
+.section{padding:80px 80px}
+.heading{display:flex;align-items:end;justify-content:space-between;margin-bottom:32px}
+.section h2{margin:12px 0 0;font-size:36px;letter-spacing:-1px}
+.muted{color:var(--green);font-size:14px;font-weight:700}
+.projects{background:#020b0b}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.card{background:#061311;border:1px solid #142d29;border-radius:12px;overflow:hidden;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.card:hover{border-color:#00f0aa55;transform:translateY(-3px);box-shadow:0 12px 30px #0008}
+.preview{height:220px;position:relative;overflow:hidden;background:#0e1d1b;display:flex;align-items:center;justify-content:center}
+.preview img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .35s ease}
+.card:hover .preview img{transform:scale(1.04)}
+.info{padding:20px 24px 24px}
+.info h3{font-size:18px;margin:0 0 8px}
+.info p{color:#78918b;font-size:13px;margin:0 0 20px}
+.info a{color:var(--green);font-size:14px;font-weight:700}
+.green{background:linear-gradient(105deg,#02201c,#001313)}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.service{background:#061311;border:1px solid #142d29;border-radius:12px;padding:24px}
+.icon{width:32px;height:32px;border:1px solid #16765e;border-radius:50%;display:grid;place-items:center;color:var(--green);margin-bottom:12px}
+.service h3{font-size:18px;margin:0 0 8px}
+.service strong{font-size:13px;color:var(--green)}
+.service ul{margin:12px 0 0;padding:0;list-style:none}
+.service li{color:#b1c1bc;font-size:13px;margin:8px 0}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.about-image{height:400px;border-radius:14px;overflow:hidden;border:1px solid #142d29;background:#061311;box-shadow:0 12px 30px #0008}
+.about-image img{width:100%;height:100%;object-fit:cover;object-position:center 25%;display:block}
+.about h3{font-size:26px;line-height:1.18;margin:12px 0 16px}
+.about p{color:#a2b8b1;font-size:16px;line-height:1.6}
+.banner{margin:0 80px 50px;padding:35px 50px;border:1px solid #12604e;border-radius:8px;background:radial-gradient(circle at 80% 10%,#0a684e,#03211c 42%,#06211d);display:flex;align-items:center;justify-content:space-between}
+.banner h2{font-size:28px;margin:10px 0 8px}
+.banner p{margin:0;color:#abc1ba;font-size:14px}
+footer{display:flex;align-items:center;justify-content:space-between;padding:0 80px 40px}
+.footer-links{display:flex;gap:50px;font-size:14px;color:#c2d0cc}
+.contact-modal{position:fixed;inset:0;z-index:20;display:none;place-items:center;padding:24px;background:#000b;backdrop-filter:blur(7px)}
+.form-card{width:min(100%,560px);position:relative;padding:38px 42px 42px;border:1px solid #1a6a56;border-radius:12px;background:linear-gradient(145deg,#071c18,#020b0a 70%);box-shadow:0 24px 80px #000}
+.close{position:absolute;top:18px;right:18px;display:grid;place-items:center;width:32px;height:32px;border:1px solid #1d5c4d;border-radius:50%;background:transparent;color:#b4d0c8;cursor:pointer}
+.form-card h2{margin:8px 0 10px;font-size:34px;letter-spacing:-1.5px}
+.form-card p{margin:0 0 25px;max-width:450px;color:#a8c0b8;font-size:13px;line-height:1.55}
+.form-card form{display:grid;gap:14px}
+.form-card label{display:grid;gap:7px;color:#dbe9e4;font-size:11px;font-weight:700}
+.form-card input,.form-card textarea,.form-card select{width:100%;border:1px solid #21483f;border-radius:5px;outline:0;padding:13px 14px;background:#061310;color:#f1f5f3;font:inherit;font-size:13px;resize:vertical}
+.form-card input:focus,.form-card textarea:focus,.form-card select:focus{border-color:var(--green);box-shadow:0 0 0 3px #00f0aa1c}
+.form-card input::placeholder,.form-card textarea::placeholder{color:#6f8981}
+.send{justify-self:end;display:inline-flex;align-items:center;gap:8px;margin-top:5px;padding:13px 20px;border:0;border-radius:24px;background:var(--green);color:#001d14;font-size:12px;font-weight:800;cursor:pointer}
+@media (max-width:850px){.site{width:100%}.hero{padding:0 25px 50px}.hero-grid{grid-template-columns:1fr}.hero-art{transform:scale(.82);transform-origin:left top;min-height:350px;margin-bottom:-65px}.hero h1{font-size:43px}.section{padding:50px 25px}.projects-grid,.services{grid-template-columns:1fr 1fr}.about{grid-template-columns:1fr}.banner{margin:0 25px 40px;flex-direction:column;gap:20px;align-items:flex-start}footer{padding:0 25px 30px}.footer-links{display:none}}
+@media (max-width:560px){.projects-grid,.services{grid-template-columns:1fr}.hero-art{transform:scale(.65);margin-right:-120px}}
+</style>
+</head>
+<body>
+<div class="site" id="top">
+<section class="hero"><header><a class="brand" href="#top">Kog<span>Design</span></a><nav><a href="#work">Work</a><a href="#services">Services</a><a href="#about">About</a><a href="#contact">Contact</a></nav><a class="cta" href="#contact">Let's Talk →</a></header><div class="hero-grid"><div><div class="eyebrow">WEB DESIGN & DEVELOPMENT</div><h1>I build websites<br>that help businesses<br><span>grow.</span></h1><p>Modern, high-converting websites for brands,<br>local businesses, and creators.</p><div class="actions"><a class="button primary" href="#work">View My Work ↓</a><a class="button outline" href="#contact">Let's Talk</a></div></div><div class="hero-art"><div class="scribble">Clean design.<br>Real results.</div><div class="laptop"><div class="screen"><small>SHOP NOW</small><h3>MORE<br>THAN JUST<br><b>MERCH</b></h3></div><div class="base"></div></div><div class="phone"><h4>MORE<br>THAN JUST<br><b>MERCH</b></h4></div></div></div></section>
+<section class="section" id="work"><div class="heading"><div><div class="eyebrow">FEATURED PROJECTS</div><h2>Selected Work</h2></div><a class="muted" href="#contact">View all projects →</a></div><div class="projects-grid"><article class="card"><div class="preview"><img src="images/HitSnoozeStudios.png" alt="Hitsnoozestudios" title="Hitsnoozestudios" /></div><div class="info"><h3>Hitsnoozestudios</h3><p>E-commerce / Clothing Brand</p><a href="Hitsnoozestudios/HITSNOOZESTUDIOS.html">View Project →</a></div></article><article class="card"><div class="preview"><img src="images/jsmorlu.png" alt="JS Morlu" title="JS Morlu" /></div><div class="info"><h3>JS Morlu</h3><p>Professional Services / Accounting</p><a href="JS MORLU/JS MORLU.html">View Project →</a></div></article><article class="card"><div class="preview"><img src="images/jjmrestoration.png" alt="JJM Restoration" title="JJM Restoration" /></div><div class="info"><h3>JJM Restoration</h3><p>Local Service Business / Remodeling</p><a href="J&M RESTORATIONS/J&M.html">View Project →</a></div></article></div></section>
+<section class="section green" id="services"><div class="heading"><div><div class="eyebrow">WHAT I DO</div><h2>Website Services</h2></div></div><div class="services"><article class="service"><div class="icon">◈</div><h3>Landing Pages</h3><strong>From $500</strong><ul><li>High-converting design</li><li>Mobile responsive</li><li>Fast turnaround</li></ul></article><article class="service"><div class="icon">⌘</div><h3>Business Websites</h3><strong>From $800</strong><ul><li>Custom design</li><li>SEO ready</li><li>Content setup</li></ul></article><article class="service"><div class="icon">◇</div><h3>Website Redesigns</h3><strong>From $600</strong><ul><li>Modern look & feel</li><li>Better performance</li><li>Improved UX</li></ul></article></div></section>
+<section class="section" id="about"><div class="about"><div class="about-image"><img src="images/raw.png" alt="About KogDesign" /></div><div><div class="eyebrow">ABOUT ME</div><h3>I'm a web designer and developer who loves creating clean, modern websites that make an impact.</h3><p>I help businesses and creators turn their ideas into beautiful, functional websites. I'm passionate about good design, clean code, and building long-term relationships with my clients.</p></div></div></section>
+<section class="banner" id="contact"><div><div class="mini">READY TO GET STARTED?</div><h2>Have a website in mind?</h2><p>Let's bring your vision to life. Get in touch and I'll get back to you as soon as possible.</p></div><button class="button primary" id="contactButton">Contact Me →</button></section><footer><a class="brand" href="#top">Kog<span>Design</span></a><div class="footer-links"><a href="#work">Work</a><a href="#services">Services</a><a href="#about">About</a><a href="#contact">Contact</a></div><small>© 2025 KogDesign. All rights reserved.</small></footer></div>
+<div class="contact-modal" id="modal" style="display:none"><div class="form-card"><button class="close" data-close aria-label="Close">×</button><div class="eyebrow">LET'S CONNECT</div><h2>Get in touch</h2><p>Have a project in mind or a question about my services? I'd love to hear from you.</p><form id="contactForm">
+    <label>Name<input required name="name" placeholder="Your name"></label>
+    <label>Email address<input required type="email" name="email" placeholder="you@example.com"></label>
+    <label>What do you need
+        <select name="need" required>
+            <option value="new website">New website</option>
+            <option value="website redesign">Website redesign</option>
+            <option value="landing page">Landing page</option>
+            <option value="website update">Website update</option>
+            <option value="other">Other</option>
+        </select>
+    </label>
+    <label>Budget
+        <select name="budget" required>
+            <option value="under-500">Under $500</option>
+            <option value="500-1000">$500-$1,000</option>
+            <option value="1000-2000">$1,000-$2,000</option>
+            <option value="2000">$2,000</option>
+        </select>
+    </label>
+    <label>Message<textarea required name="message" rows="5" placeholder="Tell me a little about your project..."></textarea></label>
+    <button class="send" type="submit">Send message →</button>
+</form></div></div>
+<script>const modal=document.getElementById('modal');document.getElementById('contactButton').addEventListener('click',()=>{modal.style.display='grid'});document.querySelector('[data-close]').addEventListener('click',()=>modal.style.display='none');modal.addEventListener('click',e=>{if(e.target===modal)modal.style.display='none'});document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDefault();e.target.innerHTML='<h3>Message ready to send.</h3><p>Thanks for reaching out. I will get back to you as soon as possible.</p><button class="send" type="button" data-done>Close</button>';document.querySelector('[data-done]').addEventListener('click',()=>modal.style.display='none')});</script>
+</body></html>
